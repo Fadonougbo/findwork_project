@@ -4,20 +4,13 @@
 
 @section('main')
    <main class="p-3" >
-        @php
-            $tagList=explode(',',$listing->tags);
-        @endphp
-        <section class="p-3  " >
+        <section class="p-3" >
             <div>
                 <h3 class="text-laravel my-1 text-center text-4xl" > 
                     {{$listing->title}}
                  </h3>
                 <h4 class="text-2xl text-center my-2" >{{$listing->company}}</h4>
-                <div class="py-2 flex justify-center space-x-3 w-full " >
-                    @foreach ($tagList as $tag)
-                        <span class="bg-laravel p-1 text-white rounded-md" >{{$tag}}</span>
-                    @endforeach
-                </div>
+                 @include('laragigs.tags',['newClass'=>'flex justify-center space-x-3 w-full'])
                 <address class="my-1 text-center" >{{$listing->location}}</address>
             </div>
             <hr>
@@ -26,8 +19,8 @@
                 <p class="text-justify my-2 p-6 text-xl " >{{$listing->description}}</p>
             </div>
             <div class="flex justify-center items-center  flex-wrap " >
-                <a href="" class="no-underline bg-laravel text-white p-3 m-3 " >Contact employer</a>
-                <a href="" class="no-underline bg-black text-white p-3 m-3 " >Visite website</a>
+                <a href="" class="no-underline bg-laravel text-white p-3 m-3 rounded-md  " >Contact employer</a>
+                <a href="" class="no-underline bg-black text-white p-3 m-3 rounded-md  " >Visite website</a>
             </div>
         </section>
    </main>

@@ -7,16 +7,27 @@ use Illuminate\Http\Request;
 
 class ListingController extends Controller
 {
-    public function index() {
+    public function index(Request $request) {
 
-        $listings=Listing::paginate(5);
+        $tagQuery=$request->query('tag');
+
+        $listings=Listing::tagname($tagQuery)->paginate(5)->withQueryString();
+
         return view('laragigs.home',[
             'listings'=>$listings
         ]);
         
     }
 
-    public function show(Listing $listing) {
+    public function show(string $slug,Listing $listing) {
+
+        $trueSlug=$listing->slug;
+/* 
+        if($slug!==$trueSlug) {
+
+          return redirect()->route('listings.show',['slug'=>$trueSlug,'listing'=>$listing->id]);
+        } */
+
         return view('laragigs.show',[
             'listing'=>$listing
         ]);

@@ -29,6 +29,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Listing newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Listing newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Listing query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Listing tagname(?string $tagname)
  * @method static \Illuminate\Database\Eloquent\Builder|Listing whereCompany($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Listing whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Listing whereDescription($value)

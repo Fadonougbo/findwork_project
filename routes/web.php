@@ -20,10 +20,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::prefix('/listings')->name('listings.')->controller(ListingController::class)->group(function() {
+$slug='^([\w]+-)+(\w+)$';
+$id='\d+';
+
+Route::prefix('/listings')->name('listings.')->controller(ListingController::class)->group(function() use($slug,$id) {
 
     Route::get('/','index')->name('index');
-    Route::get('/{listing}','show')->where('id','\d+')->name('show');
+    Route::get('/{slug}/{listing}','show')->where(['slug'=>$slug,'listing'=>$id])->name('show');
     
 });
 
