@@ -10,7 +10,9 @@ class Listing extends Model
 {
     use HasFactory;
 
-    public function scopetagname(Builder $query,string|null $tagname) {
+    public $fillable=['title','company','description','tags','location','email','website','slug'];
+
+    public function scopeFilterByTagName(Builder $query,string|null $tagname) {
         if(!empty($tagname)) {
             $query->where('tags','LIKE',"%{$tagname}%");
         }

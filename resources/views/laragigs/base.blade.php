@@ -6,8 +6,8 @@
     <title>@yield('title')</title>
     @vite(['resources/css/app.css','resources/js/app.js'])
 </head>
-<body>
-    <header class="flex items-center justify-between p-4 bg-laravel  text-white " >
+<body class="w-full flex flex-col min-h-screen">
+    <header class="flex items-center justify-between p-4 bg-laravel text-white" >
         <h1 class="text-xl capitalize cursor-pointer font-bold" >
             <a href="{{route('listings.index')}}" class="no-underline" >laragigs</a>
         </h1>
@@ -16,6 +16,13 @@
             <a href="" class=" no-underline  mx-3 capitalize  transition-all border-2 border-white rounded-md p-1 font-bold  hover:scale-125 ">login</a> 
         </nav>
     </header>
-    @yield('main')
+
+    <main class="grow-2" >
+        @yield('main')   
+    </main>
+    
+    <footer class="p-3 flex justify-end bg-laravel" >
+        <a href="{{route('listings.create')}}" class=" no-underline  mx-3 capitalize  transition-all border-2 border-white text-white  rounded-md p-1 font-bold  hover:scale-105 " >Post job</a>
+    </footer>
 </body>
 </html>

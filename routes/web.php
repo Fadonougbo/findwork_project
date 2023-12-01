@@ -20,21 +20,28 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-$slug='^([\w]+-)+(\w+)$';
-$id='\d+';
+/* $slug='^([\w]+-)+(\w+)$';
+$id='\d+'; */
 
-Route::prefix('/listings')->name('listings.')->controller(ListingController::class)->group(function() use($slug,$id) {
+Route::prefix('/listings')->name('listings.')->controller(ListingController::class)->group(function() {
 
     Route::get('/','index')->name('index');
-    Route::get('/{slug}/{listing}','show')->where(['slug'=>$slug,'listing'=>$id])->name('show');
+    //Route::get('/{slug}/{listing}','show')->where(['slug'=>$slug,'listing'=>$id])->name('show');
+    Route::get('/{slug}/{listing}','show')->name('show');
+    /**
+     * show create form
+     */
+    Route::get('/create','create')->name('create');
+    /**
+     * store data
+     */
+    Route::post('/create','store')->name('store');
     
 });
 
-
-
-Route::get('/data/{id}',function() {
-});
-
+/**
+ * laravel breeze route
+ */
 
 Route::get('/dashboard', function () {
     return view('dashboard');

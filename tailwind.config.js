@@ -10,6 +10,7 @@ export default {
     ],
 
     theme: {
+
         extend: {
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
@@ -17,7 +18,14 @@ export default {
             colors:{
                 laravel:'#ef4444',
                 sectbg:'#f3f3f3'
-            }
+            },
+            flexGrow:{
+                2:'2'
+            },
+            
+            screens: {
+                ml:'425px'
+            },
         },
     },
 

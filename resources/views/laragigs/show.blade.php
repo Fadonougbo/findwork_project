@@ -3,7 +3,10 @@
 @section('title',$listing->title)
 
 @section('main')
-   <main class="p-3" >
+   <div class="p-3" >
+        @if (session()->has('success'))
+            @include('laragigs.shared.success',['msg'=>'Job created succesfully'])
+        @endif
         <section class="p-3" >
             <div>
                 <h3 class="text-laravel my-1 text-center text-4xl" > 
@@ -23,5 +26,5 @@
                 <a href="" class="no-underline bg-black text-white p-3 m-3 rounded-md  " >Visite website</a>
             </div>
         </section>
-   </main>
+    </div>
 @endsection
