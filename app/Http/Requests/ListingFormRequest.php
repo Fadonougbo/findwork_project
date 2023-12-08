@@ -30,7 +30,8 @@ class ListingFormRequest extends FormRequest
             'email'=>['required','email'],
             'tags'=>['required'],
             'description'=>['required'],
-            'slug'=>['unique:listings,slug','nullable']
+            'slug'=>['unique:listings,slug','nullable'],
+            'logo'=>['file','image']
         ];
     }
 

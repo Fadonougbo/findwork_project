@@ -25,17 +25,19 @@ namespace App\Models{
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property string $slug
+ * @property string|null $logo
  * @method static \Database\Factories\ListingFactory factory($count = null, $state = [])
+ * @method static \Illuminate\Database\Eloquent\Builder|Listing filterByTagName(?string $tagname)
  * @method static \Illuminate\Database\Eloquent\Builder|Listing newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Listing newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Listing query()
- * @method static \Illuminate\Database\Eloquent\Builder|Listing tagname(?string $tagname)
  * @method static \Illuminate\Database\Eloquent\Builder|Listing whereCompany($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Listing whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Listing whereDescription($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Listing whereEmail($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Listing whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Listing whereLocation($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Listing whereLogo($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Listing whereSlug($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Listing whereTags($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Listing whereTitle($value)

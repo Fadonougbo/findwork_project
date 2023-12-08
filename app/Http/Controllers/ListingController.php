@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ListingFormRequest;
 use App\Models\Listing;
 use Illuminate\Http\Request;
+use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\Storage;
 
 class ListingController extends Controller
 {
@@ -22,7 +24,7 @@ class ListingController extends Controller
 
     public function show(string $slug,Listing $listing) {
 
-        $trueSlug=$listing->slug;
+        $trueSlug=$listing->slug; 
  /* 
         if($slug!==$trueSlug) {
           return redirect()->route('listings.show',['slug'=>$trueSlug,'listing'=>$listing->id]);
@@ -34,14 +36,24 @@ class ListingController extends Controller
     }
 
     public function create() {
-        
         return view('laragigs.create');
     }
 
     public function store(ListingFormRequest $request) {
+      
         $data=$request->validated();
+
         $element=Listing::create($data);
 
-        return redirect()->route('listings.show',['slug'=>$element->slug,'listing'=>$element->id]);
+        if($element->logo) {
+           /**
+            * @var UploadedFile
+            */
+            $file=$data['logo'];
+            $res=$file->store();
+        }
+       
+       return redirect()->route('listings.show',['slug'=>$element->slug,'listing'=>$element->id])
+                        ->with('success','');
     }
 }
