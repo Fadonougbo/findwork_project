@@ -36,6 +36,17 @@ Route::prefix('/listings')->name('listings.')->controller(ListingController::cla
      * store data
      */
     Route::post('/create','store')->name('store');
+
+    /**
+     * update 
+     */
+    Route::get('/update/listing/{listing}','update')->name('update');
+
+    /**
+     * save modification
+     */
+
+    Route::put('/update/listing/{listing}','save')->name('save');
     
 });
 

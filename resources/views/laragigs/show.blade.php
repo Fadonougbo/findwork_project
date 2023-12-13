@@ -5,12 +5,16 @@
 @section('main')
    <div class="p-3" >
         @if (session()->has('success'))
-            @include('laragigs.shared.message',['msg'=>'Job created succesfully','type'=>'success'])
+            @include('laragigs.shared.message',['msg'=>session('success'),'type'=>'success'])
+        @endif
+        @if (session()->has('update_error'))
+            @include('laragigs.shared.message',['msg'=>session('update_error'),'type'=>'error'])
         @endif
         <section class="p-3" >
             <div>
                 <h3 class="text-laravel my-1 text-center text-4xl" > 
                     {{$listing->title}}
+                    <a href="{{route('listings.update',['listing'=>$listing->id])}}">update</a>
                  </h3>
                 <h4 class="text-2xl text-center my-2" >{{$listing->company}}</h4>
                  @include('laragigs.tags',['newClass'=>'flex justify-center space-x-3 w-full'])

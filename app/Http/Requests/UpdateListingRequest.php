@@ -3,9 +3,9 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Support\Str;
+use Illuminate\Validation\Rule;
 
-class ListingFormRequest extends FormRequest
+class UpdateListingRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,22 +22,19 @@ class ListingFormRequest extends FormRequest
      */
     public function rules(): array
     {
+        $currentModel=$this->route()->parameter('listing');
+
         return [
-            'title'=>['required','unique:listings,title'],
-            'company'=>['required','unique:listings,company'],
+            'title'=>['required',Rule::unique('listings','title')->ignoreModel($currentModel)],
+            'company'=>['required',Rule::unique('listings','company')->ignoreModel($currentModel)],
             'location'=>['required'],
             'website'=>['required'],
             'email'=>['required','email'],
             'tags'=>['required'],
             'description'=>['required'],
-            'slug'=>['unique:listings,slug','nullable'],
-            'logo'=>['file','image','nullable']
+            'slug'=>[Rule::unique('listings','slug')->ignoreModel($currentModel),'nullable'],
+            'logo'=>['file','image'],
+            'delete_status'=>['boolean']
         ];
-    }
-
-    public function prepareForValidation() {
-        return $this->merge([
-            'slug'=>Str::slug( $this->input('slug')??$this->input('company') )
-        ]);
     }
 }
