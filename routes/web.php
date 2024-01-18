@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ListingController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Http\Request;
@@ -47,7 +48,31 @@ Route::prefix('/listings')->name('listings.')->controller(ListingController::cla
      */
 
     Route::put('/update/listing/{listing}','save')->name('save');
+
+    /* 
+        Delete post
+    */
+
+    Route::delete('/delete/listing/{listing}','destroy')->name('destroy');
     
+});
+
+Route::prefix('/register')->name('auth')->controller(AuthController::class)->group(function() {
+
+    //registration form
+    Route::get('/user','register')->middleware('guest')->name('.register');
+
+    //create new user
+    Route::post('/user','store')->middleware('guest')->name('.store');
+
+    //login
+    Route::get('/login','login')->middleware('guest')->name('.login');
+
+    //authentication
+    Route::post('/login','authentication')->middleware('guest')->name('.authentication');
+
+    //logout
+    Route::post('/logout','logout')->middleware('auth')->name('.logout');
 });
 
 /**

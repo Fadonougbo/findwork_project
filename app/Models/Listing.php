@@ -13,6 +13,9 @@ class Listing extends Model
 
     public $fillable=['title','company','description','tags','location','email','website','slug','logo'];
 
+    /* 
+        Recuperation des elements qui corresponde au tag entré en query string
+     */
     public function scopeFilterByTagName(Builder $query,string|null $tagname) {
         if(!empty($tagname)) {
             $query->where('tags','LIKE',"%{$tagname}%");
@@ -21,6 +24,7 @@ class Listing extends Model
     }
 
     public function getLogoPath() {
+       
        return Storage::disk('public')->url($this->logo);
     }
 }

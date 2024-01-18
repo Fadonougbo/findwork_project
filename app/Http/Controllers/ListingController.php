@@ -12,11 +12,11 @@ use Illuminate\Support\Facades\Storage;
 class ListingController extends Controller
 {
     public function index(Request $request) {
-
-        $tagQuery=$request->query('tag');
-
-        $listings=Listing::filterByTagName($tagQuery)->paginate(5)->withQueryString();
         
+        $tagQuery=$request->input('tag');
+
+        $listings=Listing::orderByDesc('updated_at')->filterByTagName($tagQuery)->paginate(5)->withQueryString();
+  
         return view('laragigs.home',[
             'listings'=>$listings
         ]);
@@ -45,11 +45,13 @@ class ListingController extends Controller
         $listing=(new Listing());
         $data=$request->validated();
 
+        
         /**
         * @var UploadedFile
         */
         $logo=$request->validated('logo');
         $filename=$this->getUploadedFileName($logo);
+
         if($filename) {
             $data['logo']=$filename;
         }
@@ -83,6 +85,8 @@ class ListingController extends Controller
             $this->deleteOldLogoPath($listing);
         }
 
+
+        
         /**
          * @var uploadedFile
          */
@@ -107,8 +111,14 @@ class ListingController extends Controller
                         ->with('success','Job update successfuly');
     }
 
+    public function destroy(Listing $listing) {
+        $listing->delete();
+
+        return redirect()->route('listings.index')->with('success','Job deleted successfuly');
+    }
+
     /**
-     * Donne le nom du fichier ajouter
+     * retourne le nom du fichier ajouter
      *
      * @param UploadedFile|null $file
      * @param Listing $listing
@@ -118,7 +128,7 @@ class ListingController extends Controller
     private function getUploadedFileName(?UploadedFile $file):string|bool {
 
 
-        if($file) {
+        if($file && $file->isFile()) {
             $newFilename=$file->store();
             return $newFilename;
         }
@@ -128,7 +138,7 @@ class ListingController extends Controller
     }
 
     /**
-     * Supprime l'ancienne image du post si il existe
+     * Supprime l'ancien image du post si il existe
      *
      * @param string $filename
      * @return void

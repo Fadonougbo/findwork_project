@@ -11,11 +11,30 @@
             @include('laragigs.shared.message',['msg'=>session('update_error'),'type'=>'error'])
         @endif
         <section class="p-3" >
-            <div>
-                <h3 class="text-laravel my-1 text-center text-4xl" > 
-                    {{$listing->title}}
-                    <a href="{{route('listings.update',['listing'=>$listing->id])}}">update</a>
-                 </h3>
+            <div class="flex flex-col items-center" >
+                <section class="flex " >
+
+                     <h3 class="text-laravel flex items-center text-center text-4xl align-middle" > 
+                        {{$listing->title}}
+                    </h3>
+                    <div class="flex items-center" >
+                        <a href="{{route('listings.update',['listing'=>$listing->id])}}" class="mx-2  no-underline text-sm capitalize bg-laravel p-1 text-white rounded" >update</a>
+                        <form method="POST" action="{{route('listings.destroy',['listing'=>$listing->id])}}">
+                            @csrf
+                            @method('delete') 
+                            <button class="mx-2  no-underline text-sm capitalize bg-red-700 p-1 text-white rounded" >delete</button>
+                        </form>
+                        
+                    </div>
+                    
+                </section>
+               
+                @if($listing->logo)
+                    <img src="{{$listing->getLogoPath()}}" alt="logo_image" class="w-56 h-56" >
+                @else
+                    
+                    <section class="w-56 h-56 bg-laravel" ></section>
+                @endif
                 <h4 class="text-2xl text-center my-2" >{{$listing->company}}</h4>
                  @include('laragigs.tags',['newClass'=>'flex justify-center space-x-3 w-full'])
                 <address class="my-1 text-center" >{{$listing->location}}</address>
