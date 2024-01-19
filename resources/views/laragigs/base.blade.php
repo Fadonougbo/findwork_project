@@ -39,7 +39,7 @@
         @yield('main')   
     </main>
     <footer class="p-3 flex justify-center text-white bg-laravel" >
-        <p>Copyright © Gautier Fadonougbo 2024,All rights reseved </p>
+        <p>Copyright © Fadonougbo 2024,All rights reseved </p>
     </footer>
 </body>
 </html>
