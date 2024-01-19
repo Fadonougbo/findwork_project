@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ListingFormRequest;
 use App\Http\Requests\UpdateListingRequest;
 use App\Models\Listing;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
 class ListingController extends Controller
@@ -16,7 +18,7 @@ class ListingController extends Controller
         $tagQuery=$request->input('tag');
 
         $listings=Listing::orderByDesc('updated_at')->filterByTagName($tagQuery)->paginate(5)->withQueryString();
-  
+
         return view('laragigs.home',[
             'listings'=>$listings
         ]);
@@ -24,12 +26,6 @@ class ListingController extends Controller
     }
 
     public function show(string $slug,Listing $listing) {
-
-        $trueSlug=$listing->slug; 
-  /* 
-        if($slug!==$trueSlug) {
-          return redirect()->route('listings.show',['slug'=>$trueSlug,'listing'=>$listing->id]);
-        }   */
 
         return view('laragigs.show',[
             'listing'=>$listing
@@ -42,10 +38,8 @@ class ListingController extends Controller
 
     public function store(ListingFormRequest $request) {
       
-        $listing=(new Listing());
         $data=$request->validated();
-
-        
+   
         /**
         * @var UploadedFile
         */
@@ -57,6 +51,7 @@ class ListingController extends Controller
         }
 
         $element=Listing::create($data);
+        $element->user()->associate(Auth::user())->save();
        
        return redirect()->route('listings.show',['slug'=>$element->slug,'listing'=>$element->id])
                         ->with('success','Job created succesfully');
@@ -159,5 +154,10 @@ class ListingController extends Controller
         }
 
         return $storage->delete($filename);
+    }
+
+    public function dashboard() {
+        $listings=Auth::user()->listings;
+        return view('laragigs.dashboard',['listings'=>$listings]);
     }
 }

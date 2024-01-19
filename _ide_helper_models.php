@@ -26,6 +26,8 @@ namespace App\Models{
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property string $slug
  * @property string|null $logo
+ * @property int|null $user_id
+ * @property-read \App\Models\User|null $user
  * @method static \Database\Factories\ListingFactory factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder|Listing filterByTagName(?string $tagname)
  * @method static \Illuminate\Database\Eloquent\Builder|Listing newModelQuery()
@@ -42,6 +44,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Listing whereTags($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Listing whereTitle($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Listing whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Listing whereUserId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Listing whereWebsite($value)
  */
 	class Listing extends \Eloquent {}
@@ -59,6 +62,8 @@ namespace App\Models{
  * @property string|null $remember_token
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Listing> $listings
+ * @property-read int|null $listings_count
  * @property-read \Illuminate\Notifications\DatabaseNotificationCollection<int, \Illuminate\Notifications\DatabaseNotification> $notifications
  * @property-read int|null $notifications_count
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \Laravel\Sanctum\PersonalAccessToken> $tokens

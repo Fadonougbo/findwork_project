@@ -32,38 +32,43 @@ Route::prefix('/listings')->name('listings.')->controller(ListingController::cla
     /**
      * show create form
      */
-    Route::get('/create','create')->name('create');
+    Route::get('/create','create')->middleware('auth')->name('create');
     /**
      * store data
      */
-    Route::post('/create','store')->name('store');
+    Route::post('/create','store')->middleware('auth')->name('store');
 
     /**
      * update 
      */
-    Route::get('/update/listing/{listing}','update')->name('update');
+    Route::get('/update/listing/{listing}','update')->middleware('auth')->name('update');
 
     /**
      * save modification
      */
 
-    Route::put('/update/listing/{listing}','save')->name('save');
+    Route::put('/update/listing/{listing}','save')->middleware('auth')->name('save');
 
     /* 
         Delete post
     */
 
-    Route::delete('/delete/listing/{listing}','destroy')->name('destroy');
+    Route::delete('/delete/listing/{listing}','destroy')->middleware('auth')->name('destroy');
+
+    /*
+    dashboard 
+     */
+    Route::get('/dashboard','dashboard')->middleware('auth')->name('dashboard');
     
 });
 
-Route::prefix('/register')->name('auth')->controller(AuthController::class)->group(function() {
+Route::prefix('/user')->name('auth')->controller(AuthController::class)->group(function() {
 
     //registration form
-    Route::get('/user','register')->middleware('guest')->name('.register');
+    Route::get('/register','register')->middleware('guest')->name('.register');
 
     //create new user
-    Route::post('/user','store')->middleware('guest')->name('.store');
+    Route::post('/register','store')->middleware('guest')->name('.store');
 
     //login
     Route::get('/login','login')->middleware('guest')->name('.login');

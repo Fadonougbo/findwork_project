@@ -9,7 +9,7 @@
 <body class="w-full flex flex-col min-h-screen">
     <header class="flex items-center justify-between p-4 bg-laravel text-white" >
         <h1 class="text-xl capitalize cursor-pointer font-bold grow-0 " >
-            <a href="{{route('listings.index')}}" class="no-underline" >laragigs</a>
+            <a href="{{route('listings.index')}}" class="no-underline capitalize" >findwork</a>
         </h1>
         <div class="grow-2 flex justify-end" >
             <nav class="w-3/5 flex justify-end" >
@@ -18,7 +18,7 @@
                     <a href="{{route('auth.login')}}" class=" no-underline  mx-3 capitalize  transition-all border-2 border-white rounded-md p-1 font-bold  hover:scale-125 ">login</a> 
                 @endguest
                 @auth 
-                    <a href="" class=" no-underline  mx-3 capitalize  transition-all border-2 border-white rounded-md p-1 font-bold  hover:scale-125 ">dashboard</a> 
+                    <a href="{{route('listings.dashboard')}}" class=" no-underline  mx-3 capitalize  transition-all border-2 border-white rounded-md p-1 font-bold  hover:scale-125 ">dashboard</a> 
                     <a href="{{route('listings.create')}}" class=" no-underline  mx-3 capitalize  transition-all border-2 border-white rounded-md p-1 font-bold  hover:scale-125 ">Post job</a>
                     <form action="{{route('auth.logout')}}" method="POST" >
                         @csrf
@@ -38,8 +38,8 @@
     <main class="grow-2" >
         @yield('main')   
     </main>
-    <footer class="p-3 flex justify-end bg-laravel" >
-        <a href="{{route('listings.create')}}" class=" no-underline  mx-3 capitalize  transition-all border-2 border-white text-white  rounded-md p-1 font-bold  hover:scale-105 " >Post job</a>
+    <footer class="p-3 flex justify-center text-white bg-laravel" >
+        <p>Copyright © Gautier Fadonougbo 2024,All rights reseved </p>
     </footer>
 </body>
 </html>

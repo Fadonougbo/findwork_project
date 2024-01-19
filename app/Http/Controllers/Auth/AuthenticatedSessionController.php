@@ -28,8 +28,11 @@ class AuthenticatedSessionController extends Controller
         $request->authenticate();
 
         $request->session()->regenerate();
-
-        return redirect()->intended(RouteServiceProvider::HOME);
+        /*
+        route for redirection if user is already login 
+         */
+        $route=route('listings.index')??RouteServiceProvider::HOME;
+        return redirect()->intended($route);
     }
 
     /**
