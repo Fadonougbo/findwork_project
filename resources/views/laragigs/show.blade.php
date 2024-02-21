@@ -27,12 +27,12 @@
                     </div>
                     @endauth
                 </section>
-               
+              
                 @if($listing->logo)
                     <img src="{{$listing->getLogoPath()}}" alt="logo_image" class="w-56 h-56" >
                 @else
                     
-                    <section class="w-56 h-56 bg-laravel" ></section>
+                <img src="/pic.jpeg" alt="logo_image" class="w-56 h-56" >
                 @endif
                 <h4 class="text-2xl text-center my-2" >{{$listing->company}}</h4>
                  @include('laragigs.tags',['newClass'=>'flex justify-center space-x-3 w-full'])

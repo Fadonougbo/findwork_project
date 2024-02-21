@@ -8,7 +8,7 @@
             @include('laragigs.shared.message',['msg'=>'Please register required field','type'=>'error'])
         @endif
         <section class="w-full flex flex-col text-center my-2" >
-            <h2 class="font-bold capitalize text-6xl text-laravel">Update a job</h2>
+            <h2 class="font-bold capitalize text-6xl text-laravel">Update a post</h2>
         </section>
         <section class="flex w-full justify-center" >
             <form action="" method="POST" enctype="multipart/form-data"  class="p-4 bg-gray-300 rounded-2xl flex flex-col w-full ml:w-3/4 items-center md:w-1/2" >

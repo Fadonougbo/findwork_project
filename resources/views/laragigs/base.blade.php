@@ -28,13 +28,14 @@
             </nav>
             @auth 
             <div class="flex items-center" >
-                <span class="w-10 h-10 bg-gray-600 block mx-2 rounded-full" ></span>
+                <span class="w-10 h-10 block mx-2" ><img src="/user.jpeg" class="h-full w-full rounded-full" alt=""></span>
                 <span class="capitalize text-lg" >{{Auth::user()->name}}</span>
+                
             </div>
             @endauth
         </div>
     </header>
-
+    
     <main class="grow-2" >
         @yield('main')   
     </main>
