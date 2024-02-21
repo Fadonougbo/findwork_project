@@ -10,7 +10,7 @@
         <table class="w-2/3 my-3 p-2 " >
             <thead>
                 <tr class=" text-2xl" >
-                    <th class="border-solid border-2 border-gray-700" >Name</th>
+                    <th class="border-solid border-2 border-gray-700" >Job title</th>
                     <th class="border-solid border-2 border-gray-700" >Action</th>
                 </tr>
             </thead>
@@ -19,7 +19,7 @@
                     <tr class="" >
                         <td class="border-solid border-2 border-gray-700 text-2xl" >{{$listing->title}}</td>
                         <td class="border-solid border-2 border-gray-700 flex items-center" >
-                            <a href="{{route('listings.update',['listing'=>$listing])}}" class="mx-2  no-underline text-sm capitalize bg-blue-700 p-2 text-white rounded" >Edit</a>
+                            <a href="{{route('listings.update',['listing'=>$listing])}}" class="mx-2  no-underline text-sm capitalize bg-blue-700 p-2 text-white rounded" >Update</a>
                             <form method="POST" action="{{route('listings.destroy',['listing'=>$listing])}}">
                             @csrf
                             @method('delete') 

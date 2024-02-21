@@ -8,8 +8,8 @@
 </head>
 <body class="w-full flex flex-col min-h-screen">
     <header class="flex items-center justify-between p-4 bg-laravel text-white" >
-        <h1 class="text-xl capitalize cursor-pointer font-bold grow-0 " >
-            <a href="{{route('listings.index')}}" class="no-underline capitalize" >findwork</a>
+        <h1 class=" capitalize cursor-pointer font-bold grow-0 " >
+            <a href="{{route('listings.index')}}" class="no-underline text-3xl" ><em>findwork</em></a>
         </h1>
         <div class="grow-2 flex justify-end" >
             <nav class="w-3/5 flex justify-end" >
@@ -28,7 +28,7 @@
             </nav>
             @auth 
             <div class="flex items-center" >
-                <span class="w-10 h-10 bg-blue-700 block mx-2 rounded-full" ></span>
+                <span class="w-10 h-10 bg-gray-600 block mx-2 rounded-full" ></span>
                 <span class="capitalize text-lg" >{{Auth::user()->name}}</span>
             </div>
             @endauth

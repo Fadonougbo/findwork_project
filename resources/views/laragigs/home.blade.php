@@ -9,8 +9,8 @@
             @if (session()->has('success'))
                 @include('laragigs.shared.message',['msg'=>session('success'),'type'=>'success'])
             @endif
-            <h2 class="text-center text-4xl my-5" >Latest Listing</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4  justify-items-center mt-3 p-3" >
+            <h2 class="text-center text-6xl font-bold my-10 text-laravel" >Last posts</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4  justify-items-center mt-4 p-3" >
                 @foreach ($listings as $listing)
                     <section class="p-3 bg-sectbg w-full " >
                         <h3 class="text-laravel my-1 text-center" >

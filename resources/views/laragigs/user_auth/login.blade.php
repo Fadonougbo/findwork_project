@@ -21,8 +21,8 @@
             </div>
         @endif
         <div class="w-3/5 bg-gray-300 rounded-2xl my-2" >
-            <section class="w-full flex flex-col text-center my-2" >
-                <h2 class="font-bold capitalize text-2xl text-laravel">LOGIN</h2>
+            <section class="w-full flex flex-col text-center my-4" >
+                <h2 class="font-bold capitalize text-4xl text-laravel">LOGIN</h2>
             </section>
             <section class="flex w-full justify-center" >
                 <form action="" method="POST"  class="p-2 flex flex-col w-full ml:w-3/4 items-center md:w-1/2" >
