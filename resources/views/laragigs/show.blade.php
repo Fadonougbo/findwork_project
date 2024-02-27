@@ -17,14 +17,16 @@
                         {{$listing->title}}
                     </h3>
                     @auth 
-                    <div class="flex items-center" >
-                        <a href="{{route('listings.update',['listing'=>$listing->id])}}" class="mx-2  no-underline text-sm capitalize bg-blue-700 p-2 text-white rounded" >update</a>
-                        <form method="POST" action="{{route('listings.destroy',['listing'=>$listing->id])}}">
-                            @csrf
-                            @method('delete') 
-                            <button class="mx-2  no-underline text-sm capitalize bg-red-700 p-2 text-white rounded" >delete</button>
-                        </form>
-                    </div>
+                        @if (Auth::user()->id===$listing->user_id)
+                            <div class="flex items-center" >
+                                <a href="{{route('listings.update',['listing'=>$listing->id])}}" class="mx-2  no-underline text-sm capitalize bg-blue-700 p-2 text-white rounded" >update</a>
+                                <form method="POST" action="{{route('listings.destroy',['listing'=>$listing->id])}}">
+                                    @csrf
+                                    @method('delete') 
+                                    <button class="mx-2  no-underline text-sm capitalize bg-red-700 p-2 text-white rounded" >delete</button>
+                                </form>
+                            </div>
+                        @endif
                     @endauth
                 </section>
               

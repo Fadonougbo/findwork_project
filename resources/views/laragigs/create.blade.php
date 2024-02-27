@@ -8,7 +8,7 @@
             @include('laragigs.shared.message',['msg'=>'Please register required field','type'=>'error'])
         @endif
         <section class="w-full flex flex-col text-center my-2" >
-            <h2 class="font-bold capitalize text-6xl text-laravel">create a post</h2>
+            <h2 class="font-bold capitalize text-6xl text-laravel">post a job</h2>
             <p class="text-2xl font-semibold " >Post a job to find developer</p>
         </section>
         <section class="flex w-full justify-center my-10" >
@@ -22,7 +22,7 @@
                 @include('laragigs.shared.inpute',['label'=>'contact email','labelClasse'=>'text-laravel font-semibold','name'=>'email','type'=>'email'])
                 @include('laragigs.shared.inpute',['label'=>'Tag (comma separated)','labelClasse'=>'text-laravel font-semibold','name'=>'tags','placeholder'=>"Laravel,adonisJS,nodejs,php"])
                 @include('laragigs.shared.textarea',['name'=>'description','labelClasse'=>'text-laravel font-semibold','label'=>'job description'])
-                @include('laragigs.shared.inpute',['label'=>'company logo','labelClasse'=>'text-laravel font-semibold','name'=>'logo','type'=>'file'])
+                @include('laragigs.shared.inpute',['label'=>'company logo','labelClasse'=>'text-laravel font-semibold','name'=>'logo','type'=>'file','req'=>false])
                 
                 <section class="flex w-full my-4 justify-center">
                     <button type="submit" class="capitalize bg-laravel text-white p-2 m-3 rounded-md" >create job</button>

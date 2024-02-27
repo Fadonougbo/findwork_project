@@ -14,8 +14,8 @@
         <div class="grow-2 flex justify-end" >
             <nav class="w-3/5 flex justify-end" >
                 @guest 
-                    <a href="{{route('auth.register')}}" class="no-underline mx-3 capitalize transition-all border-2 border-white rounded-md p-1 font-bold  hover:scale-125 " >register</a>
-                    <a href="{{route('auth.login')}}" class=" no-underline  mx-3 capitalize  transition-all border-2 border-white rounded-md p-1 font-bold  hover:scale-125 ">login</a> 
+                    <a href="{{route('auth.register')}}" class="no-underline mx-3 capitalize transition-all border-2 border-white rounded-md p-1 font-bold  hover:scale-125 " >sign up</a>
+                    <a href="{{route('auth.login')}}" class=" no-underline  mx-3 capitalize  transition-all border-2 border-white rounded-md p-1 font-bold  hover:scale-125 ">sign in</a> 
                 @endguest
                 @auth 
                     <a href="{{route('listings.dashboard')}}" class=" no-underline  mx-3 capitalize  transition-all border-2 border-white rounded-md p-1 font-bold  hover:scale-125 ">dashboard</a> 

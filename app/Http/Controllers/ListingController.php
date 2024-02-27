@@ -19,6 +19,8 @@ class ListingController extends Controller
 
         $listings=Listing::orderByDesc('updated_at')->filterByTagName($tagQuery)->paginate(5)->withQueryString();
 
+       
+
         return view('laragigs.home',[
             'listings'=>$listings
         ]);
@@ -161,3 +163,5 @@ class ListingController extends Controller
         return view('laragigs.dashboard',['listings'=>$listings]);
     }
 }
+
+/* Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni aliquam voluptatem dicta perspiciatis eligendi ipsam atque et reprehenderit commodi, amet doloribus eveniet sint perferendis praesentium numquam, labore debitis odit quo vitae est autem? Quae odio eos aliquam ex pariatur ad dicta, ipsum iusto placeat eaque perspiciatis labore est consectetur atque esse officiis molestias. Optio vel, ab voluptate a aliquid excepturi consequuntur vitae reprehenderit velit inventore, perspiciatis deserunt unde fugiat eligendi distinctio sit iure corrupti fugit, rem soluta minus dolorem quisquam quae. Voluptas molestias earum dolore id porro maxime et impedit recusandae itaque consequatur inventore, nisi nobis distinctio sequi natus quia? */

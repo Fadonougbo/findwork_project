@@ -10,7 +10,7 @@
         <section class="w-full flex flex-col text-center my-2" >
             <h2 class="font-bold capitalize text-6xl text-laravel">Update a post</h2>
         </section>
-        <section class="flex w-full justify-center" >
+        <section class="flex w-full justify-center my-8 " >
             <form action="" method="POST" enctype="multipart/form-data"  class="p-4 bg-gray-300 rounded-2xl flex flex-col w-full ml:w-3/4 items-center md:w-1/2" >
 
                 @csrf
@@ -30,7 +30,7 @@
                             <img src="{{$listing->getLogoPath()}}" alt="logo">
                         </div>
                 @endif
-                @include('laragigs.shared.inpute',['label'=>'company logo','labelClasse'=>'text-laravel font-semibold','name'=>'logo','type'=>'file'])
+                @include('laragigs.shared.inpute',['label'=>'company logo','labelClasse'=>'text-laravel font-semibold','name'=>'logo','type'=>'file','req'=>false])
                 
                 
                 <section class="flex w-full my-4 justify-center">

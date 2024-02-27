@@ -10,7 +10,7 @@
         <table class="w-2/3 my-3 p-2 " >
             <thead>
                 <tr class=" text-2xl" >
-                    <th class="border-solid border-2 border-gray-700" >Post title</th>
+                    <th class="border-solid border-2 border-gray-700" >job title</th>
                     <th class="border-solid border-2 border-gray-700" >Actions</th>
                 </tr>
             </thead>
